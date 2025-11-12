@@ -1,0 +1,506 @@
+.<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Morales | Soluciones Digitales para Emprendedores</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #FF0000;
+            --dark-bg: #0f0f0f;
+            --darker-bg: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: #aaaaaa;
+            --accent-red: #cc0000;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--darker-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.2);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-red), #ff6666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-red);
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-red);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background-color: var(--darker-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid var(--primary-red);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .service-card h3 {
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            color: var(--primary-red);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .about-section {
+            background-color: var(--darker-bg);
+            padding: 3rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-red);
+        }
+
+        .achievement {
+            background-color: rgba(255, 0, 0, 0.1);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            border-left: 3px solid var(--primary-red);
+        }
+
+        .payment-section {
+            text-align: center;
+            background-color: var(--darker-bg);
+            padding: 3rem;
+            border-radius: 10px;
+        }
+
+        .payment-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .payment-btn {
+            padding: 1.5rem 3rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .mercadopago-btn {
+            background-color: #009ee3;
+            color: white;
+        }
+
+        .stripe-btn {
+            background-color: #635bff;
+            color: white;
+        }
+
+        .payment-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            background-color: var(--darker-bg);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 2px solid var(--primary-red);
+        }
+
+        .contact-info {
+            margin: 2rem 0;
+        }
+
+        .contact-info a {
+            color: var(--primary-red);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            background-color: var(--dark-bg);
+            margin: 10% auto;
+            padding: 2rem;
+            border: 2px solid var(--primary-red);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .close {
+            color: var(--text-secondary);
+            float: right;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--primary-red);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background-color: var(--darker-bg);
+            border: 1px solid var(--primary-red);
+            color: var(--text-primary);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Daniel Morales</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <h1>Soluciones Digitales para Emprendedores</h1>
+        <p>Transformo ideas en realidad digital con IA, desarrollo web, apps móviles y estrategias de contenido</p>
+        <button class="cta-button" onclick="document.getElementById('contactModal').style.display='block'">Consulta Gratuita</button>
+    </section>
+
+    <div class="container">
+        <section class="section" id="servicios">
+            <h2 class="section-title">Servicios Profesionales</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>✨ Consultoría en IA</h3>
+                    <p>Asesoramiento personalizado desde herramientas básicas hasta soluciones avanzadas de IA para maximizar tu productividad.</p>
+                    <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
+                        <li>Implementación de ChatGPT, Claude, Midjourney</li>
+                        <li>Automatización de flujos de trabajo</li>
+                        <li>Estrategias de prompting avanzado</li>
+                        <li>Sesiones personalizadas 1-a-1</li>
+                    </ul>
+                    <div class="price">Desde USD $50/hora</div>
+                    <button class="cta-button" onclick="openPayment('ia-consulting')">Contratar Ahora</button>
+                </div>
+
+                <div class="service-card">
+                    <h3>📱 Desarrollo de Apps Móviles</h3>
+                    <p>Creación de aplicaciones móviles desde cero para Android, con experiencia publicando en Google Play Store.</p>
+                    <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
+                        <li>Apps nativas para Android</li>
+                        <li>Diseño UI/UX profesional</li>
+                        <li>Integración de APIs</li>
+                        <li>Publicación en Play Store</li>
+                    </ul>
+                    <div class="price">Desde USD $500</div>
+                    <button class="cta-button" onclick="openPayment('app-dev')">Contratar Ahora</button>
+                </div>
+
+                <div class="service-card">
+                    <h3>🌐 Desarrollo Web</h3>
+                    <p>Sitios web profesionales, responsivos y optimizados. Landing pages, e-commerce y plataformas web personalizadas.</p>
+                    <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
+                        <li>Diseño web moderno y responsivo</li>
+                        <li>Optimización SEO</li>
+                        <li>Integraciones de pago</li>
+                        <li>Hosting y dominio incluido</li>
+                    </ul>
+                    <div class="price">Desde USD $300</div>
+                    <button class="cta-button" onclick="openPayment('web-dev')">Contratar Ahora</button>
+                </div>
+
+                <div class="service-card">
+                    <h3>🤖 Chatbots Personalizados</h3>
+                    <p>Desarrollo de chatbots inteligentes para atención al cliente, automatización y ventas 24/7.</p>
+                    <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
+                        <li>Chatbots con IA conversacional</li>
+                        <li>Integración WhatsApp, Instagram, Web</li>
+                        <li>Automatización de respuestas</li>
+                        <li>Panel de administración</li>
+                    </ul>
+                    <div class="price">Desde USD $400</div>
+                    <button class="cta-button" onclick="openPayment('chatbot')">Contratar Ahora</button>
+                </div>
+
+                <div class="service-card">
+                    <h3>📈 Gestión de Redes Sociales</h3>
+                    <p>Gestión integral de TikTok con estrategia hacia la monetización. Creación de contenido viral y crecimiento orgánico.</p>
+                    <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
+                        <li>Estrategia de contenido profesional</li>
+                        <li>Edición y publicación de videos</li>
+                        <li>Análisis de métricas</li>
+                        <li>Camino a la monetización</li>
+                    </ul>
+                    <div class="price">USD $200/mes</div>
+                    <button class="cta-button" onclick="openPayment('social-media')">Contratar Ahora</button>
+                </div>
+
+                <div class="service-card">
+                    <h3>⚡ Automatizaciones</h3>
+                    <p>Automatización de procesos empresariales para ahorrar tiempo y aumentar la eficiencia operativa.</p>
+                    <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
+                        <li>Integración de herramientas (Zapier, Make)</li>
+                        <li>Automatización de emails y reportes</li>
+                        <li>Flujos de trabajo personalizados</li>
+                        <li>Bots para tareas repetitivas</li>
+                    </ul>
+                    <div class="price">Desde USD $250</div>
+                    <button class="cta-button" onclick="openPayment('automation')">Contratar Ahora</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="sobre-mi">
+            <h2 class="section-title">Sobre Mí</h2>
+            <div class="about-section">
+                <h3 style="color: var(--primary-red); margin-bottom: 1rem;">Daniel Morales - @dmoralesllc</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Especialista en soluciones digitales con más de 15 años de experiencia en gestión empresarial y tecnología.</p>
+                
+                <div class="achievement">
+                    <h4 style="color: var(--primary-red); margin-bottom: 0.5rem;">🏆 Ganador Startup Weekend Chaco 2023</h4>
+                    <p>Premio a la Innovación Tecnológica en Inteligencia Artificial - Un logro que muy pocos influencers pueden mencionar.</p>
+                </div>
+
+                <div class="achievement">
+                    <h4 style="color: var(--primary-red); margin-bottom: 0.5rem;">📱 Desarrollo de Apps Publicadas</h4>
+                    <p>Experiencia creando y publicando aplicaciones móviles en Google Play Store desde cero, trabajando con ingeniería de software.</p>
+                </div>
+
+                <div class="achievement">
+                    <h4 style="color: var(--primary-red); margin-bottom: 0.5rem;">💼 15 Años en Supermercadismo</h4>
+                    <p>Gestión de servicios en empresa de consumo masivo. Conocimiento profundo de estrategias con clientes y proveedores.</p>
+                </div>
+
+                <div class="achievement">
+                    <h4 style="color: var(--primary-red); margin-bottom: 0.5rem;">📈 Estratega de TikTok</h4>
+                    <p>He monetizado cuentas de TikTok aplicando estrategias efectivas de contenido y crecimiento orgánico.</p>
+                </div>
+
+                <div class="achievement">
+                    <h4 style="color: var(--primary-red); margin-bottom: 0.5rem;">🤖 Experto en IA</h4>
+                    <p>Acompañamiento desde cero en el uso de herramientas de IA básicas hasta las más complejas para productividad, creación de contenido, estudio y soluciones empresariales.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section payment-section">
+            <h2 class="section-title">Métodos de Pago</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">Acepto pagos desde Argentina, Estados Unidos y Europa</p>
+            <div class="payment-buttons">
+                <button class="payment-btn mercadopago-btn" onclick="alert('Contacta por WhatsApp para coordinar pago con Mercado Pago\n\nWhatsApp: +54 9 XXXX-XXXX')">
+                    🟦 Mercado Pago (Argentina)
+                </button>
+                <button class="payment-btn stripe-btn" onclick="alert('Contacta para pago internacional con Stripe/PayPal\n\nEmail: contacto@dmorales.com.ar')">
+                    🌐 Stripe/PayPal (USA/Europa)
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <footer id="contacto">
+        <h3>Contacto</h3>
+        <div class="contact-info">
+            <a href="https://www.tiktok.com/@dmoralesllc" target="_blank">TikTok</a>
+            <a href="https://linktr.ee/dmorales100" target="_blank">Links</a>
+            <a href="mailto:contacto@dmorales.com.ar">Email</a>
+        </div>
+        <p style="margin-top: 2rem; color: var(--text-secondary);">&copy; 2025 Daniel Morales. Todos los derechos reservados.</p>
+        <p style="color: var(--text-secondary);">dmorales.com.ar</p>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('contactModal').style.display='none'">&times;</span>
+            <h2 style="color: var(--primary-red); margin-bottom: 1rem;">Consulta Gratuita</h2>
+            <form id="contactForm">
+                <input type="text" placeholder="Nombre Completo" required>
+                <input type="email" placeholder="Email" required>
+                <input type="tel" placeholder="Teléfono/WhatsApp" required>
+                <textarea placeholder="Cuéntame sobre tu proyecto..." rows="5" required></textarea>
+                <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">Enviar Consulta</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openPayment(service) {
+            const services = {
+                'ia-consulting': 'Consultoría en IA',
+                'app-dev': 'Desarrollo de Apps Móviles',
+                'web-dev': 'Desarrollo Web',
+                'chatbot': 'Chatbots Personalizados',
+                'social-media': 'Gestión de Redes Sociales',
+                'automation': 'Automatizaciones'
+            };
+            
+            alert('Servicio seleccionado: ' + services[service] + '\n\nPara contratar este servicio:\n\n1. Contáctame por WhatsApp o Email\n2. Discutimos los detalles de tu proyecto\n3. Procedo con el pago (Mercado Pago o Stripe/PayPal)\n\nWhatsApp: +54 9 XXXX-XXXX\nEmail: contacto@dmorales.com.ar');
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Gracias por tu interés! Me pondré en contacto contigo lo antes posible.');
+            document.getElementById('contactModal').style.display = 'none';
+            this.reset();
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
